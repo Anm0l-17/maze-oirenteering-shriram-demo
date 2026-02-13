@@ -30,9 +30,14 @@ const AdminPanel = () => {
     const createAthlete = async () => {
         if (!name) return alert("Enter name");
 
-        await API.post("/admin/create-athlete", { name });
-        setName("");
-        fetchDashboard();
+        try {
+            await API.post("/admin/create-athlete", { name });
+            setName("");
+            fetchDashboard();
+        } catch (error) {
+            console.error("Create athlete error:", error);
+            alert("Failed to create athlete: " + (error.response?.data?.message || error.message));
+        }
     };
 
     const deleteAthlete = async (id) => {
