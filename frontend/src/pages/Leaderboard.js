@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import API from "../api";
 import { io } from "socket.io-client";
 
-const socket = io(process.env.REACT_APP_API_URL || "http://localhost:5001");
+const socket = io("https://maze-oirenteering-shriram-demo.onrender.com");
 
 const Leaderboard = () => {
   const [data, setData] = useState([]);
@@ -25,7 +25,7 @@ const Leaderboard = () => {
   };
 
   const exportCSV = () => {
-    window.open(`${process.env.REACT_APP_API_URL || "http://localhost:5001"}/api/leaderboard/export`);
+    window.open("https://maze-oirenteering-shriram-demo.onrender.com/api/leaderboard/export");
   };
 
   const filteredData = data.filter((athlete) =>

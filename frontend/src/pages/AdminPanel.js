@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import API from "../api";
 import { io } from "socket.io-client";
 
-const socket = io(process.env.REACT_APP_API_URL || "http://localhost:5001");
+const socket = io("https://maze-oirenteering-shriram-demo.onrender.com");
 
 const AdminPanel = () => {
     const [name, setName] = useState("");
