@@ -3,6 +3,8 @@ import http from "http";
 import { Server } from "socket.io";
 import dotenv from "dotenv";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import connectDB from "./config/db.js";
 import scanRoutes from "./routes/scanRoutes.js";
@@ -41,6 +43,28 @@ app.use("/api/auth", authRoutes);
 
 // Initialize socket logic
 initSocket(io);
+
+// ----------------------------------
+// Deployment Configuration
+// ----------------------------------
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve Static Assets in Production
+// (Ensure you run `npm run build` in frontend and have the build folder at backend/../frontend/build)
+if (process.env.NODE_ENV === "production") {
+  const buildPath = path.join(__dirname, "../frontend/build");
+  app.use(express.static(buildPath));
+
+  app.get(/(.*)/, (req, res) => {
+    res.sendFile(path.resolve(buildPath, "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running...");
+  });
+}
+// ----------------------------------
 
 const PORT = process.env.PORT || 5000;
 

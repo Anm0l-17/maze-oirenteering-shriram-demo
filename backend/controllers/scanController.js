@@ -43,7 +43,7 @@ export const scanCheckpoint = async (req, res) => {
       return res.status(400).json({ message: "Scan START first" });
     }
 
-    const VALID_CHECKPOINTS = [1, 2];
+    const VALID_CHECKPOINTS = [1, 2, 3, 4, 5];
 
     // 🏁 FINISH (MUST COME BEFORE STRICT VALIDATION)
     if (checkpointId === 999) {

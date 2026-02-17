@@ -1,0 +1,19 @@
+{
+    "name": "maze-orienteering",
+    "version": "1.0.0",
+    "description": "Maze Orienteering App",
+    "scripts": {
+        "start": "cd backend && node server.js",
+        "build": "npm install && npm run build-client",
+        "install-client": "cd frontend && npm install",
+        "install-server": "cd backend && npm install",
+        "build-client": "npm run install-client && npm run install-server && cd frontend && npm run build",
+        "heroku-postbuild": "npm run build-client"
+    },
+    "engines": {
+        "node": ">=16.0.0"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
