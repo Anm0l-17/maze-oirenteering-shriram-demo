@@ -33,6 +33,13 @@ const Home = () => {
             View Leaderboard
           </button>
 
+          <button
+            onClick={() => navigate("/athlete")}
+            className="px-8 py-4 text-lg rounded-xl bg-violet-600 text-white font-semibold shadow-lg hover:bg-violet-700 hover:scale-105 transition transform duration-200"
+          >
+            🔐 Athlete Login
+          </button>
+
         </div>
 
       </div>
