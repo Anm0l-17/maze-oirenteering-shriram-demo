@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <div className="home-container">
       {/* Maze background image */}
-      <div className="maze-bg"></div>
+      <div className="maze-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/maze.png)` }}></div>
       {/* Dark overlay for readability */}
       <div className="maze-overlay"></div>
 
