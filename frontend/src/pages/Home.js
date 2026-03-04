@@ -1,47 +1,64 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./Home.css";
+
+const images = [
+  { src: "/images/basketball.png", alt: "Basketball" },
+  { src: "/images/stadium.png", alt: "Stadium" },
+  { src: "/images/marathon.png", alt: "Marathon" },
+  { src: "/images/gym.png", alt: "Gym" },
+  { src: "/images/volleyball.png", alt: "Volleyball" },
+  { src: "/images/swimming.png", alt: "Swimming" },
+];
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-900 via-blue-800 to-blue-600">
+    <div className="home-container">
+      {/* Floating decorative circles */}
+      <div className="floating-circle circle-1"></div>
+      <div className="floating-circle circle-2"></div>
+      <div className="floating-circle circle-3"></div>
+      <div className="floating-circle circle-4"></div>
 
-      <div className="bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl px-16 py-14 text-center max-w-2xl w-full">
+      {/* Top row of images */}
+      <div className="image-grid">
+        {images.slice(0, 3).map((img, i) => (
+          <div className="image-card" key={i}>
+            <img src={img.src} alt={img.alt} />
+          </div>
+        ))}
+      </div>
 
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-          🏁 Maze Event System
+      {/* Heading */}
+      <div className="home-heading">
+        <h1>
+          <span>NCC</span>
+          <span>TEAMPLAN</span>
         </h1>
+      </div>
 
-        <p className="text-lg text-gray-600 mb-10">
-          Professional dashboard for managing athletes and tracking performance in real-time.
-        </p>
+      {/* Bottom row of images */}
+      <div className="image-grid">
+        {images.slice(3, 6).map((img, i) => (
+          <div className="image-card" key={i + 3}>
+            <img src={img.src} alt={img.alt} />
+          </div>
+        ))}
+      </div>
 
-        <div className="flex flex-col md:flex-row gap-6 justify-center">
-
-          <button
-            onClick={() => navigate("/admin")}
-            className="px-8 py-4 text-lg rounded-xl bg-blue-600 text-white font-semibold shadow-lg hover:bg-blue-700 hover:scale-105 transition transform duration-200"
-          >
-            Go to Admin Panel
-          </button>
-
-          <button
-            onClick={() => navigate("/leaderboard")}
-            className="px-8 py-4 text-lg rounded-xl bg-emerald-500 text-white font-semibold shadow-lg hover:bg-emerald-600 hover:scale-105 transition transform duration-200"
-          >
-            View Leaderboard
-          </button>
-
-          <button
-            onClick={() => navigate("/athlete")}
-            className="px-8 py-4 text-lg rounded-xl bg-violet-600 text-white font-semibold shadow-lg hover:bg-violet-700 hover:scale-105 transition transform duration-200"
-          >
-            🔐 Athlete Login
-          </button>
-
-        </div>
-
+      {/* Action buttons */}
+      <div className="button-group">
+        <button className="btn btn-leaderboard" onClick={() => navigate("/leaderboard")}>
+          <span className="btn-icon">🏆</span> LEADERBOARD
+        </button>
+        <button className="btn btn-login" onClick={() => navigate("/athlete")}>
+          <span className="btn-icon">➡️</span> LOGIN
+        </button>
+        <button className="btn btn-admin" onClick={() => navigate("/admin")}>
+          <span className="btn-icon">⚙️</span> ADMIN
+        </button>
       </div>
     </div>
   );
