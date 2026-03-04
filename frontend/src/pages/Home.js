@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 const images = [
-  { src: "/images/basketball.png", alt: "Basketball" },
-  { src: "/images/stadium.png", alt: "Stadium" },
-  { src: "/images/marathon.png", alt: "Marathon" },
-  { src: "/images/gym.png", alt: "Gym" },
-  { src: "/images/volleyball.png", alt: "Volleyball" },
-  { src: "/images/swimming.png", alt: "Swimming" },
+  { src: "/images/photo1.jpg", alt: "NCC Event" },
+  { src: "/images/photo2.jpg", alt: "Team Photo" },
+  { src: "/images/photo3.jpg", alt: "Adventure" },
+  { src: "/images/photo4.jpg", alt: "Find Your Way" },
+  { src: "/images/photo5.jpg", alt: "Outdoor Activity" },
+  { src: "/images/photo6.jpg", alt: "Team Event" },
+  { src: "/images/photo7.jpg", alt: "NCC Activity" },
 ];
 
 const Home = () => {
@@ -16,6 +17,11 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      {/* Maze background image */}
+      <div className="maze-bg"></div>
+      {/* Dark overlay for readability */}
+      <div className="maze-overlay"></div>
+
       {/* Floating decorative circles */}
       <div className="floating-circle circle-1"></div>
       <div className="floating-circle circle-2"></div>
@@ -39,10 +45,22 @@ const Home = () => {
         </h1>
       </div>
 
-      {/* Bottom row of images */}
+      {/* Middle image (maze card) */}
       <div className="image-grid">
-        {images.slice(3, 6).map((img, i) => (
+        <div className="image-card">
+          <img src="/images/maze.png" alt="Maze" />
+        </div>
+        {images.slice(3, 5).map((img, i) => (
           <div className="image-card" key={i + 3}>
+            <img src={img.src} alt={img.alt} />
+          </div>
+        ))}
+      </div>
+
+      {/* Bottom row */}
+      <div className="image-grid" style={{ marginBottom: "40px" }}>
+        {images.slice(5, 7).map((img, i) => (
+          <div className="image-card" key={i + 5}>
             <img src={img.src} alt={img.alt} />
           </div>
         ))}
