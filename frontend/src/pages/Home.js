@@ -45,11 +45,8 @@ const Home = () => {
         </h1>
       </div>
 
-      {/* Middle image (maze card) */}
+      {/* Middle row of images */}
       <div className="image-grid">
-        <div className="image-card">
-          <img src="/images/maze.png" alt="Maze" />
-        </div>
         {images.slice(3, 5).map((img, i) => (
           <div className="image-card" key={i + 3}>
             <img src={img.src} alt={img.alt} />
